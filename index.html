@@ -1,25 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="fP5zdys_5iAXMjhgYzOSndz_Sbp30DmEW2HuNHnjSGg" />
-    <title>RevableX — Analyze YouTube Comments. Discover Audience Questions.</title>
-    <meta name="description" content="RevableX connects to YouTube and analyzes comments to find what your viewers are asking. Understand your audience with AI-powered comment analysis." />
-    <meta name="author" content="RevableX" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="fP5zdys_5iAXMjhgYzOSndz_Sbp30DmEW2HuNHnjSGg" />
+  <title>RevableX — Analyze YouTube Comments. Discover Audience Questions.</title>
+  <meta name="description" content="RevableX connects to YouTube and analyzes comments to find what your viewers are asking. Understand your audience with AI-powered comment analysis." />
+  <meta name="author" content="RevableX" />
+  <meta property="og:title" content="RevableX — Analyze YouTube Comments. Discover Audience Questions." />
+  <meta property="og:description" content="RevableX connects to YouTube and analyzes comments to find what your viewers are asking." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --fg: #0b0f1a;
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --primary-shadow: rgba(249,115,22,0.35);
+      --accent: #0ea5e9;
+      --border: #e2e8f0;
+      --body-text: #3d4d63;
+      --muted: #64748b;
+      --soft-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --badge-bg: #e0f2fe;
+      --badge-border: #7dd3fc;
+      --badge-text: #0369a1;
+      --trust-bg: #f0fdf4;
+      --trust-icon: #22c55e;
+      --dark-section: #0b0f1a;
+      --dark-section-2: #141c2e;
+      --radius: 12px;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
 
-    <meta property="og:title" content="RevableX — Analyze YouTube Comments. Discover Audience Questions." />
-    <meta property="og:description" content="RevableX connects to YouTube and analyzes comments to find what your viewers are asking." />
-    <meta property="og:type" content="website" />
+    /* NAVBAR */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .logo img { width: 32px; height: 32px; object-fit: contain; }
+    .logo-text { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; color: var(--fg); }
+    .logo-text span { color: var(--primary); }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: #5a6a82;
+      padding: 6px 14px; border-radius: 9999px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--fg); background: var(--soft-bg); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  </head>
+    /* BUTTONS */
+    .btn-primary {
+      background: var(--primary); color: #fff;
+      border: none; cursor: pointer; font-family: inherit; font-weight: 600;
+      font-size: 14px; border-radius: 9999px;
+      padding: 10px 20px;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 18px var(--primary-shadow);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      background: none; border: none; cursor: pointer;
+      font-family: inherit; font-weight: 500; font-size: 14px;
+      color: var(--body-text); padding: 8px 16px; border-radius: 9999px;
+      transition: color 0.15s, background 0.15s; display: inline-block;
+    }
+    .btn-ghost:hover { color: var(--fg); background: var(--soft-bg); }
+    .btn-secondary {
+      background: var(--bg); color: var(--fg);
+      border: 1.5px solid var(--border); cursor: pointer;
+      font-family: inherit; font-weight: 600; font-size: 15px;
+      border-radius: 9999px; padding: 13px 28px;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .btn-secondary:hover {
+      border-color: #94a3b8; background: var(--soft-bg); transform: translateY(-1px);
+    }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--fg); border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px; z-index: 99;
+      box-shadow: 0 8px 24px rgba(11,15,26,0.08);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 12px 0; font-size: 15px; font-weight: 500;
+      color: var(--fg); border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .mobile-menu-actions .btn-ghost {
+      text-align: center; border: 1.5px solid var(--border); border-radius: 9999px; padding: 10px;
+    }
+    .mobile-menu-actions .btn-primary { justify-content: center; padding: 12px; font-size: 14px; }
+
+    /* BADGE */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--badge-bg); border: 1px solid var(--badge-border);
+      color: var(--badge-text); font-size: 13px; font-weight: 600;
+      padding: 6px 14px; border-radius: 9999px; margin-bottom: 28px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 96px 24px 80px; text-align: center;
+      max-width: 780px; margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 64px); font-weight: 900;
+      line-height: 1.07; letter-spacing: -1.5px;
+      color: var(--fg); margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 18px; line-height: 1.7; color: var(--body-text);
+      max-width: 560px; margin: 0 auto 36px;
+    }
+    .hero-btns {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .hero-btns .btn-primary { font-size: 15px; padding: 14px 28px; }
+    .trust-line {
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; flex-wrap: wrap;
+      font-size: 13px; color: var(--muted);
+    }
+    .trust-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--muted); display: inline-block;
+    }
+    .hero-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin-top: 48px; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+
+    /* SECTIONS */
+    .section { padding: 80px 24px; }
+    .section-soft { background: var(--soft-bg); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 900;
+      line-height: 1.2; letter-spacing: -0.8px; color: var(--fg); margin-bottom: 12px;
+    }
+    .section-head p { font-size: 17px; line-height: 1.7; color: var(--body-text); }
+
+    /* GRID */
+    .grid-4 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .grid-3 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    /* CARD */
+    .card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 28px rgba(11,15,26,0.1); transform: translateY(-3px); border-color: #c9d5e0; }
+    .card:hover::before { opacity: 1; }
+    .card h3 { font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 8px; }
+    .card p { font-size: 14px; line-height: 1.6; color: var(--body-text); }
+
+    /* STEP NUM */
+    .step-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff; font-size: 14px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-bottom: 16px;
+    }
+
+    /* FEATURE ICON */
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: #fff7ed; color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; flex-shrink: 0;
+    }
+
+    /* TRUST ICON */
+    .trust-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--trust-bg); color: var(--trust-icon);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-card { display: flex; gap: 16px; align-items: flex-start; }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 96px 24px; text-align: center;
+      background: linear-gradient(135deg, var(--dark-section), var(--dark-section-2));
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 900;
+      line-height: 1.2; letter-spacing: -0.8px; color: #fff; margin-bottom: 16px;
+    }
+    .cta-section p { font-size: 17px; color: #6b7fa0; max-width: 480px; margin: 0 auto 36px; }
+    .cta-section .btn-primary { font-size: 15px; padding: 16px 32px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 36px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--fg); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .logo-sm img { width: 28px; height: 28px; object-fit: contain; }
+    .logo-sm .logo-text { font-size: 16px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-actions .btn-ghost { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 480px) {
+      .nav-actions .btn-primary { font-size: 13px; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://revablex.vercel.app" class="logo">
+        <img src="LOGO_PLACEHOLDER" alt="RevableX Logo" />
+        <span class="logo-text">Revable<span>X</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#security">Security</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://revablex.vercel.app" class="btn-ghost">Login</a>
+        <a href="https://revablex.vercel.app" class="btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how-it-works">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#security">Security</a>
+    <div class="mobile-menu-actions">
+      <a href="https://revablex.vercel.app" class="btn-ghost">Login</a>
+      <a href="https://revablex.vercel.app" class="btn-primary">Get Started</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Built for YouTube creators
+    </div>
+    <h1>Analyze YouTube Comments.<br /><span>Discover Audience Questions.</span></h1>
+    <p>RevableX connects to your YouTube account and uses AI to analyze comments — surfacing exactly what your viewers are asking, so you never miss what your audience needs.</p>
+    <div class="hero-btns">
+      <a href="https://revablex.vercel.app" class="btn-primary" style="font-size:15px;padding:14px 28px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M21.35 11.1H12.18v2.73h5.32c-.23 1.34-.95 2.47-2.02 3.22v2.68h3.27c1.91-1.76 3.01-4.36 3.01-7.43 0-.5-.05-.99-.41-1.45z" fill="currentColor" opacity="0.9"/><path d="M12 22c2.73 0 5.02-.91 6.69-2.45l-3.27-2.68c-.91.61-2.07.97-3.42.97-2.63 0-4.86-1.78-5.66-4.17H3.14v2.77C4.8 19.73 8.21 22 12 22z" fill="currentColor" opacity="0.9"/><path d="M6.34 13.67c-.2-.61-.32-1.26-.32-1.93s.12-1.32.32-1.93V7.04H3.14A11.93 11.93 0 0 0 2 12c0 1.78.38 3.47 1.14 4.98l3.2-3.31z" fill="currentColor" opacity="0.9"/><path d="M12 5.36c1.48 0 2.81.51 3.86 1.51l2.89-2.89C17.07 2.29 14.75 1.36 12 1.36 8.21 1.36 4.8 3.63 3.14 6.92l3.2 3.25C7.14 7.66 9.37 5.36 12 5.36z" fill="currentColor" opacity="0.9"/></svg>
+        Get Started
+      </a>
+      <a href="#how-it-works" class="btn-secondary">Learn More</a>
+    </div>
+    <div class="trust-line">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Secure Google OAuth
+      <span class="trust-dot"></span>
+      No data stored without your permission
+    </div>
+    <hr class="hero-divider" />
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-soft" id="how-it-works">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>Four simple steps to understand exactly what your audience is asking — powered by Google OAuth and AI analysis.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Connect Your YouTube Account</h3>
+          <p>Sign in securely with Google OAuth. We request read-only access to your YouTube channel — no passwords stored.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Select a Video</h3>
+          <p>Browse your uploaded videos and pick the one you want to analyze. We support any public or unlisted video on your channel.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Fetch &amp; Analyze Comments</h3>
+          <p>RevableX fetches all comments and runs AI analysis to detect patterns, themes, and questions from your audience.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">4</div>
+          <h3>Get Audience Insights</h3>
+          <p>See a clean summary of what your viewers are asking most — sorted by frequency and intent, ready to act on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Everything you need to understand your audience</h2>
+        <p>Built specifically for YouTube creators who want real signal from their comment sections.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Comment Analysis</h3>
+          <p>Process hundreds of comments in seconds. Our AI groups similar feedback and highlights recurring themes your audience cares about.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Audience Question Detection</h3>
+          <p>Automatically identify which comments are questions — and surface the ones asked most often, so you always know what to address next.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Clean Dashboard Experience</h3>
+          <p>A minimal, distraction-free interface that shows you results clearly — no clutter, no overwhelming data, just actionable insights.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Fast Processing</h3>
+          <p>Get results in seconds, not minutes. RevableX is optimized for speed so you spend less time waiting and more time creating.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="section section-soft" id="security">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Built on trust and transparency</h2>
+        <p>Your data and your audience's privacy are treated with the highest care. Here's how we keep everything secure.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card trust-card">
+          <div class="trust-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h3>Secure Google OAuth</h3>
+            <p>We authenticate through Google's official OAuth 2.0 system. We never see, store, or handle your Google password at any point.</p>
+          </div>
+        </div>
+        <div class="card trust-card">
+          <div class="trust-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <h3>User-Controlled Access</h3>
+            <p>You decide what RevableX can access. Revoke permissions at any time from your Google account settings — we respect your control completely.</p>
+          </div>
+        </div>
+        <div class="card trust-card">
+          <div class="trust-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <div>
+            <h3>No Third-Party Data Sharing</h3>
+            <p>Your comment data and insights are yours alone. We never sell, share, or expose your data to any third-party services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <h2>Ready to understand your audience?</h2>
+    <p>Join creators who use RevableX to turn YouTube comments into clear, actionable audience insights.</p>
+    <a href="https://revablex.vercel.app" class="btn-primary" style="font-size:15px;padding:16px 32px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M21.35 11.1H12.18v2.73h5.32c-.23 1.34-.95 2.47-2.02 3.22v2.68h3.27c1.91-1.76 3.01-4.36 3.01-7.43 0-.5-.05-.99-.41-1.45z" fill="currentColor" opacity="0.9"/><path d="M12 22c2.73 0 5.02-.91 6.69-2.45l-3.27-2.68c-.91.61-2.07.97-3.42.97-2.63 0-4.86-1.78-5.66-4.17H3.14v2.77C4.8 19.73 8.21 22 12 22z" fill="currentColor" opacity="0.9"/><path d="M6.34 13.67c-.2-.61-.32-1.26-.32-1.93s.12-1.32.32-1.93V7.04H3.14A11.93 11.93 0 0 0 2 12c0 1.78.38 3.47 1.14 4.98l3.2-3.31z" fill="currentColor" opacity="0.9"/><path d="M12 5.36c1.48 0 2.81.51 3.86 1.51l2.89-2.89C17.07 2.29 14.75 1.36 12 1.36 8.21 1.36 4.8 3.63 3.14 6.92l3.2 3.25C7.14 7.66 9.37 5.36 12 5.36z" fill="currentColor" opacity="0.9"/></svg>
+      Get Started
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="https://revablex.vercel.app" class="logo logo-sm">
+        <img src="LOGO_PLACEHOLDER" alt="RevableX Logo" style="width:28px;height:28px;" />
+        <span class="logo-text" style="font-size:16px;">Revable<span>X</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="https://revablex.vercel.app/privacy">Privacy Policy</a>
+        <a href="https://revablex.vercel.app">Terms of Service</a>
+        <a href="https://revablex.vercel.app">Launch App</a>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> RevableX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const el = document.getElementById('year');
+    if (el) el.textContent = new Date().getFullYear();
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function() {
+        mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
 </html>
