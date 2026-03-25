@@ -266,8 +266,8 @@ const Index = () => {
         <a href="#features">Features</a>
         <a href="#security">Security</a>
         <div className="flex flex-col gap-2.5 mt-4">
-          <a href="#" className="rx-btn-ghost text-center text-sm border border-[hsl(var(--border))] rounded-full py-2.5">Login</a>
-          <a href="#" className="rx-btn-primary text-sm py-3 justify-center">Get Started</a>
+          <a href="https://revablex.vercel.app" className="rx-btn-ghost text-center text-sm border border-[hsl(var(--border))] rounded-full py-2.5">Login</a>
+          <a href="https://revablex.vercel.app" className="rx-btn-primary text-sm py-3 justify-center">Get Started</a>
         </div>
       </div>
 
