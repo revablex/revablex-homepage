@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import rxLogo from "@/assets/rx-logo.png";
 
 // SVG Icons
 const LogoIcon = () => (
