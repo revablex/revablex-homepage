@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import rxLogo from "@/assets/rx-logo.png";
 
 // SVG Icons
 const LogoIcon = () => (
@@ -75,11 +76,13 @@ const StarIcon = () => (
 
 // Components
 const Logo = ({ size = "md" }: { size?: "sm" | "md" }) => (
-  <a href="#" className="flex items-center gap-2 no-underline">
-    <div className={`${size === "sm" ? "w-7 h-7" : "w-8 h-8"} rounded-[8px] flex items-center justify-center`}
-      style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
-      <LogoIcon />
-    </div>
+  <a href="https://revablex.vercel.app" className="flex items-center gap-2 no-underline">
+    <img
+      src={rxLogo}
+      alt="RevableX Logo"
+      className={size === "sm" ? "w-7 h-7" : "w-8 h-8"}
+      style={{ objectFit: "contain" }}
+    />
     <span className={`font-black tracking-tight ${size === "sm" ? "text-base" : "text-lg"}`}
       style={{ color: "hsl(var(--foreground))" }}>
       Revable<span style={{ color: "hsl(var(--primary))" }}>X</span>
@@ -247,8 +250,8 @@ const Index = () => {
           </ul>
 
           <div className="rx-nav-actions-desktop flex items-center gap-2.5 flex-shrink-0">
-            <a href="#" className="rx-btn-ghost text-sm">Login</a>
-            <a href="#" className="rx-btn-primary text-sm px-5 py-2.5">Get Started</a>
+            <a href="https://revablex.vercel.app" className="rx-btn-ghost text-sm">Login</a>
+            <a href="https://revablex.vercel.app" className="rx-btn-primary text-sm px-5 py-2.5">Get Started</a>
           </div>
 
           <button className="rx-hamburger" id="hamburger" aria-label="Open menu">
@@ -263,8 +266,8 @@ const Index = () => {
         <a href="#features">Features</a>
         <a href="#security">Security</a>
         <div className="flex flex-col gap-2.5 mt-4">
-          <a href="#" className="rx-btn-ghost text-center text-sm border border-[hsl(var(--border))] rounded-full py-2.5">Login</a>
-          <a href="#" className="rx-btn-primary text-sm py-3 justify-center">Get Started</a>
+          <a href="https://revablex.vercel.app" className="rx-btn-ghost text-center text-sm border border-[hsl(var(--border))] rounded-full py-2.5">Login</a>
+          <a href="https://revablex.vercel.app" className="rx-btn-primary text-sm py-3 justify-center">Get Started</a>
         </div>
       </div>
 
@@ -287,9 +290,9 @@ const Index = () => {
         </p>
 
         <div className="flex items-center justify-center gap-3 flex-wrap mb-6">
-          <a href="#" className="rx-btn-primary text-[15px] px-7 py-[14px]">
+          <a href="https://revablex.vercel.app" className="rx-btn-primary text-[15px] px-7 py-[14px]">
             <GoogleIcon />
-            Get Started with Google
+            Get Started
           </a>
           <a href="#how-it-works" className="rx-btn-secondary text-[15px] px-7 py-[14px]">
             Learn More
@@ -408,9 +411,9 @@ const Index = () => {
         <p className="text-[17px] mx-auto mb-9 max-w-[480px]" style={{ color: "hsl(215 20% 55%)" }}>
           Join creators who use RevableX to turn YouTube comments into clear, actionable audience insights.
         </p>
-        <a href="#" className="rx-btn-primary text-[15px] px-8 py-4">
+        <a href="https://revablex.vercel.app" className="rx-btn-primary text-[15px] px-8 py-4">
           <GoogleIcon />
-          Get Started with Google
+          Get Started
         </a>
       </section>
 
@@ -419,13 +422,17 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto flex items-center justify-between flex-wrap gap-4">
           <Logo size="sm" />
           <div className="flex items-center gap-6 flex-wrap">
-            {["Privacy Policy", "Terms of Service", "Launch App"].map(link => (
-              <a key={link} href="#"
+            {[
+              { label: "Privacy Policy", href: "https://revablex.vercel.app/privacy" },
+              { label: "Terms of Service", href: "https://revablex.vercel.app" },
+              { label: "Launch App", href: "https://revablex.vercel.app" },
+            ].map(link => (
+              <a key={link.label} href={link.href}
                 className="text-[13px] transition-colors"
                 style={{ color: "hsl(var(--muted-foreground))", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "hsl(var(--foreground))")}
                 onMouseLeave={e => (e.currentTarget.style.color = "hsl(var(--muted-foreground))")}>
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
