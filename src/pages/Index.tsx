@@ -422,13 +422,17 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto flex items-center justify-between flex-wrap gap-4">
           <Logo size="sm" />
           <div className="flex items-center gap-6 flex-wrap">
-            {["Privacy Policy", "Terms of Service", "Launch App"].map(link => (
-              <a key={link} href="#"
+            {[
+              { label: "Privacy Policy", href: "https://revablex.vercel.app/privacy" },
+              { label: "Terms of Service", href: "https://revablex.vercel.app" },
+              { label: "Launch App", href: "https://revablex.vercel.app" },
+            ].map(link => (
+              <a key={link.label} href={link.href}
                 className="text-[13px] transition-colors"
                 style={{ color: "hsl(var(--muted-foreground))", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "hsl(var(--foreground))")}
                 onMouseLeave={e => (e.currentTarget.style.color = "hsl(var(--muted-foreground))")}>
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
