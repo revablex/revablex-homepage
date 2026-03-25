@@ -290,9 +290,9 @@ const Index = () => {
         </p>
 
         <div className="flex items-center justify-center gap-3 flex-wrap mb-6">
-          <a href="#" className="rx-btn-primary text-[15px] px-7 py-[14px]">
+          <a href="https://revablex.vercel.app" className="rx-btn-primary text-[15px] px-7 py-[14px]">
             <GoogleIcon />
-            Get Started with Google
+            Get Started
           </a>
           <a href="#how-it-works" className="rx-btn-secondary text-[15px] px-7 py-[14px]">
             Learn More
