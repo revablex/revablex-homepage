@@ -76,11 +76,13 @@ const StarIcon = () => (
 
 // Components
 const Logo = ({ size = "md" }: { size?: "sm" | "md" }) => (
-  <a href="#" className="flex items-center gap-2 no-underline">
-    <div className={`${size === "sm" ? "w-7 h-7" : "w-8 h-8"} rounded-[8px] flex items-center justify-center`}
-      style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
-      <LogoIcon />
-    </div>
+  <a href="https://revablex.vercel.app" className="flex items-center gap-2 no-underline">
+    <img
+      src={rxLogo}
+      alt="RevableX Logo"
+      className={size === "sm" ? "w-7 h-7" : "w-8 h-8"}
+      style={{ objectFit: "contain" }}
+    />
     <span className={`font-black tracking-tight ${size === "sm" ? "text-base" : "text-lg"}`}
       style={{ color: "hsl(var(--foreground))" }}>
       Revable<span style={{ color: "hsl(var(--primary))" }}>X</span>
