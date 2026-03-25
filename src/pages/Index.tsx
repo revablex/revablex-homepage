@@ -250,8 +250,8 @@ const Index = () => {
           </ul>
 
           <div className="rx-nav-actions-desktop flex items-center gap-2.5 flex-shrink-0">
-            <a href="#" className="rx-btn-ghost text-sm">Login</a>
-            <a href="#" className="rx-btn-primary text-sm px-5 py-2.5">Get Started</a>
+            <a href="https://revablex.vercel.app" className="rx-btn-ghost text-sm">Login</a>
+            <a href="https://revablex.vercel.app" className="rx-btn-primary text-sm px-5 py-2.5">Get Started</a>
           </div>
 
           <button className="rx-hamburger" id="hamburger" aria-label="Open menu">
