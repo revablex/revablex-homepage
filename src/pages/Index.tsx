@@ -411,9 +411,9 @@ const Index = () => {
         <p className="text-[17px] mx-auto mb-9 max-w-[480px]" style={{ color: "hsl(215 20% 55%)" }}>
           Join creators who use RevableX to turn YouTube comments into clear, actionable audience insights.
         </p>
-        <a href="#" className="rx-btn-primary text-[15px] px-8 py-4">
+        <a href="https://revablex.vercel.app" className="rx-btn-primary text-[15px] px-8 py-4">
           <GoogleIcon />
-          Get Started with Google
+          Get Started
         </a>
       </section>
 
