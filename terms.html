@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="fP5zdys_5iAXMjhgYzOSndz_Sbp30DmEW2HuNHnjSGg" />
-  <title>Terms of Service — RevableX</title>
-  <meta name="description" content="RevableX Terms of Service — Read the terms and conditions governing your use of our YouTube comment analysis platform." />
+  <title>Terms of Service - RevableX</title>
+  <meta name="description" content="RevableX Terms of Service — the rules and guidelines for using our platform." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -16,23 +15,20 @@
       --fg: #0b0f1a;
       --primary: #f97316;
       --primary-hover: #ea580c;
-      --primary-shadow: rgba(249,115,22,0.35);
       --border: #e2e8f0;
       --body-text: #3d4d63;
       --muted: #64748b;
       --soft-bg: #f8fafc;
-      --radius: 12px;
     }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--fg);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
+      line-height: 1.6;
     }
-    a { text-decoration: none; color: inherit; }
-
-    /* NAVBAR */
+    a { text-decoration: none; color: var(--primary); }
+    a:hover { text-decoration: underline; }
     .nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(255,255,255,0.92);
@@ -42,493 +38,155 @@
     }
     .nav-inner {
       max-width: 1100px; margin: 0 auto; padding: 0 24px;
-      height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      height: 64px; display: flex; align-items: center; gap: 12px;
     }
-    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo { display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; }
     .logo img { width: 32px; height: 32px; object-fit: contain; }
     .logo-text { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; color: var(--fg); }
     .logo-text span { color: var(--primary); }
-    .btn-primary {
-      background: var(--primary); color: #fff;
-      border: none; cursor: pointer; font-family: inherit; font-weight: 600;
-      font-size: 14px; border-radius: 9999px; padding: 10px 20px;
-      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
-      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
-      text-decoration: none;
+    .back-link {
+      margin-left: auto; font-size: 14px; font-weight: 500; color: var(--muted);
+      padding: 6px 14px; border-radius: 9999px; border: 1px solid var(--border);
+      transition: color 0.15s, background 0.15s; text-decoration: none;
     }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      box-shadow: 0 4px 18px var(--primary-shadow);
-      transform: translateY(-1px);
+    .back-link:hover { color: var(--fg); background: var(--soft-bg); text-decoration: none; }
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+    .page-label {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; color: var(--primary); margin-bottom: 12px;
     }
-
-    /* PAGE HEADER */
-    .page-header {
-      background: var(--soft-bg);
-      border-bottom: 1px solid var(--border);
-      padding: 56px 24px 48px;
-      text-align: center;
+    h1 {
+      font-size: clamp(32px, 5vw, 48px); font-weight: 900;
+      letter-spacing: -1px; line-height: 1.1; color: var(--fg); margin-bottom: 12px;
     }
-    .page-header-inner { max-width: 700px; margin: 0 auto; }
-    .page-tag {
-      display: inline-block;
-      background: #e0f2fe; border: 1px solid #7dd3fc;
-      color: #0369a1; font-size: 12px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      padding: 4px 14px; border-radius: 9999px; margin-bottom: 20px;
+    .page-meta {
+      font-size: 14px; color: var(--muted); margin-bottom: 48px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
     }
-    .page-header h1 {
-      font-size: clamp(28px, 5vw, 44px); font-weight: 900;
-      letter-spacing: -1px; line-height: 1.15; color: var(--fg);
-      margin-bottom: 14px;
+    h2 {
+      font-size: 20px; font-weight: 800; color: var(--fg);
+      margin-top: 48px; margin-bottom: 14px; letter-spacing: -0.3px;
     }
-    .page-header p {
-      font-size: 16px; color: var(--body-text); line-height: 1.7;
+    p { font-size: 15px; line-height: 1.8; color: var(--body-text); margin-bottom: 16px; }
+    ul { margin: 0 0 16px 0; padding-left: 0; list-style: none; }
+    ul li {
+      font-size: 15px; line-height: 1.8; color: var(--body-text);
+      padding: 6px 0 6px 20px; position: relative;
     }
-    .last-updated {
-      margin-top: 16px;
-      font-size: 13px; color: var(--muted);
-      display: flex; align-items: center; justify-content: center; gap: 6px;
+    ul li::before {
+      content: ''; position: absolute; left: 0; top: 15px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
     }
-    .last-updated-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--primary); display: inline-block;
-    }
-
-    /* CONTENT */
-    .content-wrap {
-      max-width: 780px; margin: 0 auto; padding: 64px 24px 96px;
-    }
-    .toc {
-      background: var(--soft-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 56px;
-    }
-    .toc h3 {
-      font-size: 13px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.8px; color: var(--muted); margin-bottom: 14px;
-    }
-    .toc ol {
-      list-style: none; counter-reset: toc-counter;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .toc ol li { counter-increment: toc-counter; }
-    .toc ol li a {
-      font-size: 14px; font-weight: 500; color: var(--body-text);
-      text-decoration: none;
-      transition: color 0.15s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .toc ol li a::before {
-      content: counter(toc-counter, decimal-leading-zero);
-      font-size: 11px; font-weight: 700; color: var(--primary);
-      min-width: 22px;
-    }
-    .toc ol li a:hover { color: var(--fg); }
-
-    .policy-section {
-      margin-bottom: 52px;
-      scroll-margin-top: 80px;
-    }
-    .policy-section h2 {
-      font-size: 22px; font-weight: 800; letter-spacing: -0.4px;
-      color: var(--fg); margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .policy-section h2 .num {
-      font-size: 12px; font-weight: 700; color: var(--primary);
-      background: #fff3e8; border: 1px solid #fed7aa;
-      padding: 2px 9px; border-radius: 9999px;
-      letter-spacing: 0.5px;
-    }
-    .policy-section p {
-      font-size: 15.5px; color: var(--body-text); line-height: 1.75;
-      margin-bottom: 14px;
-    }
-    .policy-section p:last-child { margin-bottom: 0; }
-    .policy-section ul {
-      list-style: none; margin: 12px 0 14px 0;
-      display: flex; flex-direction: column; gap: 8px;
-    }
-    .policy-section ul li {
-      font-size: 15.5px; color: var(--body-text); line-height: 1.7;
-      padding-left: 22px; position: relative;
-    }
-    .policy-section ul li::before {
-      content: '';
-      position: absolute; left: 0; top: 9px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--primary);
-    }
+    strong { color: var(--fg); font-weight: 600; }
     .highlight-box {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-left: 4px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      margin: 16px 0;
+      background: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid var(--primary);
+      border-radius: 8px; padding: 16px 20px; margin: 20px 0;
     }
-    .highlight-box p {
-      font-size: 15px; color: #7c3a0f; line-height: 1.7;
-      margin: 0 !important; font-weight: 500;
+    .highlight-box p { margin-bottom: 0; }
+    footer { border-top: 1px solid var(--border); padding: 28px 24px; }
+    .footer-inner {
+      max-width: 760px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
-    .contact-card {
-      background: var(--soft-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px; margin-top: 16px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .contact-card strong { font-size: 15px; color: var(--fg); }
-    .contact-card a {
-      color: var(--primary); font-weight: 600; font-size: 15px;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .contact-card a:hover { color: var(--primary-hover); }
-    .contact-card span { font-size: 14px; color: var(--muted); }
-
-    /* DIVIDER */
-    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* FOOTER */
-    .footer {
-      background: #0b0f1a; color: #94a3b8;
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-logo {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-bottom: 16px;
-    }
-    .footer-logo img { width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); }
-    .footer-logo-text { font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.4px; }
-    .footer-logo-text span { color: var(--primary); }
-    .footer p { font-size: 13px; line-height: 1.7; }
-    .footer-links {
-      display: flex; align-items: center; justify-content: center;
-      gap: 20px; flex-wrap: wrap; margin: 16px 0;
-    }
-    .footer-links a {
-      font-size: 13px; color: #64748b;
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: #94a3b8; }
-    .footer-app-link {
-      margin-top: 12px;
-      font-size: 13px;
-    }
-    .footer-app-link a {
-      color: var(--primary); font-weight: 600;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .footer-app-link a:hover { color: var(--primary-hover); }
-
-    @media (max-width: 600px) {
-      .page-header { padding: 40px 20px 36px; }
-      .content-wrap { padding: 40px 20px 72px; }
-      .policy-section h2 { font-size: 19px; }
-    }
+    .footer-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; text-decoration: none; }
+    .footer-links a:hover { color: var(--fg); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="logo">
-        <img src="/RX_logo.png" alt="RevableX Logo" />
+      <a href="/revablex-homepage/" class="logo">
+        <img src="RX_logo.png" alt="RevableX Logo" />
         <span class="logo-text">Revable<span>X</span></span>
       </a>
-      <a href="https://revablex.vercel.app" class="btn-primary" target="_blank" rel="noopener">Get Started →</a>
+      <a href="/revablex-homepage/" class="back-link">← Back to Home</a>
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <header class="page-header">
-    <div class="page-header-inner">
-      <span class="page-tag">Legal</span>
-      <h1>Terms of Service</h1>
-      <p>Please read these terms carefully before using RevableX. By accessing our service, you agree to be bound by these terms.</p>
-      <div class="last-updated">
-        <span class="last-updated-dot"></span>
-        <span>Last updated: <span id="terms-date">January 2025</span></span>
-      </div>
+  <div class="page-wrap">
+    <span class="page-label">Legal</span>
+    <h1>Terms of Service</h1>
+    <p class="page-meta">Last updated: March 2025 &nbsp;·&nbsp; Contact: <a href="mailto:teamrevablex@gmail.com">teamrevablex@gmail.com</a></p>
+
+    <h2>Introduction</h2>
+    <p>Welcome to RevableX. By accessing or using our platform at <a href="https://revablex.vercel.app" target="_blank" rel="noopener">https://revablex.vercel.app</a>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use RevableX.</p>
+
+    <h2>Service Description</h2>
+    <p>RevableX is a tool that helps creators analyze YouTube comments and discover audience insights. Our platform provides:</p>
+    <ul>
+      <li>Analysis of audience comments from YouTube videos you select</li>
+      <li>AI-powered detection and clustering of audience questions</li>
+      <li>Product opportunity intelligence and monetization recommendations</li>
+      <li>Product outline creation and launch asset generation</li>
+    </ul>
+
+    <h2>User Responsibilities</h2>
+    <p>As a user of RevableX, you agree to:</p>
+    <ul>
+      <li>Provide accurate information when creating your account</li>
+      <li>Maintain the security of your account credentials</li>
+      <li>Use the platform only for lawful purposes</li>
+      <li>Not attempt to access other users' data or accounts</li>
+      <li>Comply with all applicable laws and regulations</li>
+    </ul>
+
+    <h2>Acceptable Use Policy</h2>
+    <p>You may not use RevableX to:</p>
+    <ul>
+      <li>Spam, harass, or deceive others</li>
+      <li>Scrape or collect data for purposes outside of the platform's intended use</li>
+      <li>Violate the intellectual property rights of any third party</li>
+      <li>Attempt to reverse-engineer or exploit the platform's infrastructure</li>
+      <li>Use the platform in any way that violates YouTube's or Google's terms of service</li>
+    </ul>
+
+    <h2>YouTube Integration</h2>
+    <p>RevableX accesses YouTube data only with your explicit permission and only for analysis purposes. By connecting your YouTube account, you acknowledge that:</p>
+    <ul>
+      <li>RevableX will access comments from videos you explicitly select</li>
+      <li>All access is read-only — we never modify, delete, or post content on your behalf</li>
+      <li>You must have authorization to access the YouTube accounts you connect</li>
+      <li>You are responsible for complying with YouTube's and Google's terms of service</li>
+      <li>You can disconnect your YouTube account and revoke access at any time</li>
+    </ul>
+    <div class="highlight-box">
+      <p>Our use of YouTube API Services is subject to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>.</p>
     </div>
-  </header>
 
-  <!-- CONTENT -->
-  <main class="content-wrap">
+    <h2>Intellectual Property</h2>
+    <p>You retain full ownership of all content from your connected platforms. The analysis, insights, and monetization ideas generated by RevableX based on your data are provided for your use. You are free to use, modify, and commercialize any product ideas or content suggestions we provide. RevableX does not claim ownership over your content or the products you create. The RevableX platform, brand, and underlying technology remain the intellectual property of RevableX.</p>
 
-    <!-- TABLE OF CONTENTS -->
-    <div class="toc">
-      <h3>Table of Contents</h3>
-      <ol>
-        <li><a href="#intro">Introduction</a></li>
-        <li><a href="#use">Use of Service</a></li>
-        <li><a href="#responsibilities">User Responsibilities</a></li>
-        <li><a href="#acceptable">Acceptable Use</a></li>
-        <li><a href="#ip">Intellectual Property</a></li>
-        <li><a href="#liability">Limitation of Liability</a></li>
-        <li><a href="#youtube">YouTube Integration</a></li>
-        <li><a href="#other-platforms">Other Platforms</a></li>
-        <li><a href="#termination">Termination</a></li>
-        <li><a href="#changes">Changes to Terms</a></li>
-        <li><a href="#contact">Contact Information</a></li>
-      </ol>
-    </div>
+    <h2>Limitation of Liability</h2>
+    <p>RevableX provides its services "as is" without warranties of any kind, express or implied. We do not guarantee specific results, revenue, or success from using our monetization suggestions. We are not liable for any indirect, incidental, special, or consequential damages arising from your use of the platform. Our total liability is limited to the amount you paid for our services in the preceding 12 months.</p>
 
-    <!-- 1. INTRODUCTION -->
-    <section class="policy-section" id="intro">
-      <h2><span class="num">01</span> Introduction</h2>
-      <p>
-        Welcome to <strong>RevableX</strong> ("we," "our," or "us"). These Terms of Service ("Terms") govern your access to and use of the RevableX platform, including our website at <a href="https://revablex.vercel.app" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">revablex.vercel.app</a> and any associated services (collectively, the "Service").
-      </p>
-      <p>
-        By creating an account, signing in, or using RevableX in any way, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree with any part of these Terms, please do not use our Service.
-      </p>
-      <p>
-        These Terms apply to all users of RevableX, including YouTube creators, marketers, content strategists, and any other individuals who access the platform.
-      </p>
-    </section>
+    <h2>Other Platform Integrations</h2>
+    <p>RevableX may expand to support additional platforms beyond YouTube in the future (such as Discord, Twitter/X, or other creator platforms). When new integrations are introduced, these Terms of Service will be updated accordingly. Continued use of the platform after such changes constitutes acceptance of the updated terms.</p>
 
-    <hr class="divider" />
+    <h2>Termination</h2>
+    <p>We reserve the right to suspend or terminate your account if you violate these Terms of Service. You may also terminate your account at any time by contacting us. Upon termination, your access to the platform will be revoked, and your data will be handled in accordance with our <a href="/revablex-homepage/privacy.html">Privacy Policy</a>.</p>
 
-    <!-- 2. USE OF SERVICE -->
-    <section class="policy-section" id="use">
-      <h2><span class="num">02</span> Use of Service</h2>
-      <p>
-        RevableX grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Service for your personal or business purposes, subject to these Terms.
-      </p>
-      <p>To use RevableX, you must:</p>
-      <ul>
-        <li>Be at least 13 years of age (or the minimum age required in your country)</li>
-        <li>Have a valid Google account to authenticate via OAuth</li>
-        <li>Agree to and comply with Google's Terms of Service and YouTube's Terms of Service</li>
-        <li>Provide accurate information when setting up your account</li>
-      </ul>
-      <p>
-        RevableX is designed for lawful, legitimate use. You may not use the Service for any purpose that violates applicable laws, regulations, or these Terms.
-      </p>
-    </section>
+    <h2>Changes to Terms</h2>
+    <p>We may update these Terms of Service from time to time. We will notify you of significant changes via email or through the platform. Continued use of RevableX after changes constitutes acceptance of the updated terms.</p>
 
-    <hr class="divider" />
+    <h2>Contact Us</h2>
+    <p>If you have any questions about these Terms of Service, please contact us at <a href="mailto:teamrevablex@gmail.com">teamrevablex@gmail.com</a>.</p>
+  </div>
 
-    <!-- 3. USER RESPONSIBILITIES -->
-    <section class="policy-section" id="responsibilities">
-      <h2><span class="num">03</span> User Responsibilities</h2>
-      <p>As a user of RevableX, you are responsible for:</p>
-      <ul>
-        <li>Maintaining the security of your Google account and credentials used to access RevableX</li>
-        <li>All activities that occur under your account, whether authorized by you or not</li>
-        <li>Ensuring that your use of RevableX complies with all applicable laws, including data protection and privacy laws in your jurisdiction</li>
-        <li>Only analyzing YouTube videos and content for which you have legitimate authorization (e.g., your own videos, or publicly accessible content you are permitted to analyze)</li>
-        <li>Notifying us promptly if you become aware of any unauthorized use of your account</li>
-      </ul>
-      <p>
-        You understand that RevableX acts as a tool to help you analyze public comment data. You are responsible for how you interpret and act upon the insights provided by the Service.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 4. ACCEPTABLE USE -->
-    <section class="policy-section" id="acceptable">
-      <h2><span class="num">04</span> Acceptable Use</h2>
-      <p>You agree not to use RevableX in any manner that:</p>
-      <ul>
-        <li>Violates any local, national, or international law or regulation</li>
-        <li>Infringes upon or violates the intellectual property rights of others</li>
-        <li>Attempts to gain unauthorized access to any part of the Service or its infrastructure</li>
-        <li>Involves automated scraping, crawling, or data harvesting beyond the intended use of the Service</li>
-        <li>Transmits any malicious code, viruses, or harmful software</li>
-        <li>Interferes with or disrupts the integrity or performance of the Service</li>
-        <li>Attempts to reverse engineer, decompile, or disassemble any part of the Service</li>
-        <li>Uses the Service to harass, harm, or target individuals or groups</li>
-      </ul>
-      <p>
-        We reserve the right to suspend or terminate access for any user who violates these acceptable use guidelines.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 5. INTELLECTUAL PROPERTY -->
-    <section class="policy-section" id="ip">
-      <h2><span class="num">05</span> Intellectual Property</h2>
-      <p>
-        RevableX and its original content, features, and functionality are and will remain the exclusive property of RevableX and its creators. Our platform, including its design, code, branding, and methodology, is protected by copyright, trademark, and other applicable intellectual property laws.
-      </p>
-      <p>
-        You are granted a limited license to use the Service as described in these Terms. This does not transfer any ownership rights to you. You may not:
-      </p>
-      <ul>
-        <li>Copy, modify, or distribute any part of our platform without written permission</li>
-        <li>Use our branding, logos, or trademarks without prior written consent</li>
-        <li>Create derivative works based on our platform or proprietary methodology</li>
-      </ul>
-      <p>
-        Any content you provide or generate while using RevableX (such as saved analyses or exports) remains your property. By using the Service, you grant us a limited license to process that content solely to provide the Service to you.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 6. LIMITATION OF LIABILITY -->
-    <section class="policy-section" id="liability">
-      <h2><span class="num">06</span> Limitation of Liability</h2>
-      <p>
-        To the maximum extent permitted by applicable law, RevableX and its team members shall not be liable for any indirect, incidental, special, consequential, or punitive damages — including but not limited to loss of data, loss of profits, or business interruption — arising from your use of or inability to use the Service.
-      </p>
-
-      <div class="highlight-box">
-        <p>The Service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
-      </div>
-
-      <p>We do not warrant that:</p>
-      <ul>
-        <li>The Service will be uninterrupted, error-free, or completely secure</li>
-        <li>Results obtained from using the Service will be accurate or reliable in all cases</li>
-        <li>Any defects or errors in the Service will be corrected within a specific timeframe</li>
-      </ul>
-      <p>
-        Some jurisdictions do not allow the exclusion of certain warranties or limitation of liability, so some of the above limitations may not apply to you.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 7. YOUTUBE INTEGRATION -->
-    <section class="policy-section" id="youtube">
-      <h2><span class="num">07</span> YouTube Integration</h2>
-      <p>
-        RevableX interacts with YouTube API Services to retrieve publicly available comment data from YouTube videos selected by you. Our integration is designed to be transparent, minimal, and user-initiated at all times.
-      </p>
-
-      <div class="highlight-box">
-        <p>RevableX only retrieves YouTube data when you explicitly select a video and initiate an analysis. We never perform automated, background, or unauthorized access to YouTube data.</p>
-      </div>
-
-      <strong style="font-size: 15px; color: var(--fg); display: block; margin: 16px 0 8px;">What RevableX does with YouTube API access:</strong>
-      <ul>
-        <li>Retrieves comments from YouTube videos you explicitly select within the app</li>
-        <li>Uses your OAuth authorization to access only the data scopes you approved</li>
-        <li>Processes comment data to generate insights — all within your RevableX session</li>
-      </ul>
-
-      <strong style="font-size: 15px; color: var(--fg); display: block; margin: 16px 0 8px;">What RevableX never does:</strong>
-      <ul>
-        <li>Post, modify, or delete any content on YouTube on your behalf</li>
-        <li>Access your YouTube data beyond the videos you have explicitly selected</li>
-        <li>Access private or unlisted content without your direct, explicit authorization</li>
-        <li>Perform actions or access data outside of the user-initiated workflow</li>
-      </ul>
-
-      <p>
-        By using RevableX, you agree to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">YouTube Terms of Service</a>. You also acknowledge that your use of YouTube API Services through RevableX is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Google's Privacy Policy</a>.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 8. OTHER PLATFORMS -->
-    <section class="policy-section" id="other-platforms">
-      <h2><span class="num">08</span> Other Platforms</h2>
-      <p>
-        RevableX is currently focused on YouTube comment analysis. We intend to expand our platform to support other video hosting and social media platforms in the future.
-      </p>
-      <p>When integrations with other platforms are introduced:</p>
-      <ul>
-        <li>These Terms will be updated to reflect the scope and nature of those integrations</li>
-        <li>The same user-initiated, read-only, and data-minimal approach will apply</li>
-        <li>Users will be notified of any new integrations before they are activated</li>
-        <li>Access to third-party platform APIs will always require your explicit OAuth authorization</li>
-      </ul>
-      <p>
-        We will not enable access to any new platform integration without clearly communicating what data will be accessed and obtaining your consent.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 9. TERMINATION -->
-    <section class="policy-section" id="termination">
-      <h2><span class="num">09</span> Termination</h2>
-      <p>
-        We reserve the right to suspend or terminate your access to RevableX at any time, with or without notice, if we determine that you have violated these Terms or engaged in conduct that is harmful to other users, third parties, or the Service itself.
-      </p>
-      <p>You may also terminate your use of the Service at any time by:</p>
-      <ul>
-        <li>Stopping your use of RevableX</li>
-        <li>Revoking RevableX's access from your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Google Account Permissions</a></li>
-        <li>Contacting us at <a href="mailto:teamrevablex@gmail.com" style="color: var(--primary); font-weight: 600;">teamrevablex@gmail.com</a> to request full account deletion</li>
-      </ul>
-      <p>
-        Upon termination, your right to access and use the Service will immediately cease. Provisions of these Terms that by their nature should survive termination — including intellectual property rights, disclaimers, and limitations of liability — will remain in effect.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 10. CHANGES TO TERMS -->
-    <section class="policy-section" id="changes">
-      <h2><span class="num">10</span> Changes to Terms</h2>
-      <p>
-        We may revise these Terms of Service at any time. When we make changes, we will update the "Last updated" date at the top of this page. For significant changes that materially affect your rights or obligations, we will make reasonable efforts to notify you in advance.
-      </p>
-      <p>
-        Your continued use of RevableX after any changes to these Terms constitutes your acceptance of the revised Terms. If you do not agree to the updated Terms, you must stop using the Service.
-      </p>
-      <p>
-        We encourage you to review these Terms periodically to stay informed about the conditions governing your use of RevableX.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 11. CONTACT -->
-    <section class="policy-section" id="contact">
-      <h2><span class="num">11</span> Contact Information</h2>
-      <p>
-        If you have any questions about these Terms of Service, need to report a violation, or want to contact us about your account, please reach out:
-      </p>
-      <div class="contact-card">
-        <strong>RevableX Legal Team</strong>
-        <a href="mailto:teamrevablex@gmail.com">teamrevablex@gmail.com</a>
-        <span>We aim to respond to all inquiries within 2–3 business days.</span>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <footer>
     <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="/RX_logo.png" alt="RevableX" />
-        <span class="footer-logo-text">Revable<span>X</span></span>
-      </div>
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="mailto:teamrevablex@gmail.com">Contact</a>
+        <a href="/revablex-homepage/privacy.html">Privacy Policy</a>
+        <a href="/revablex-homepage/terms.html">Terms of Service</a>
+        <a href="https://revablex.vercel.app" target="_blank" rel="noopener">Launch App</a>
       </div>
-      <p>© <span id="year"></span> RevableX. All rights reserved.</p>
-      <p class="footer-app-link">Main application: <a href="https://revablex.vercel.app" target="_blank" rel="noopener">revablex.vercel.app</a></p>
+      <span class="footer-copy">© <span id="year"></span> RevableX. All rights reserved.</span>
     </div>
   </footer>
-
   <script>
     const el = document.getElementById('year');
     if (el) el.textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
